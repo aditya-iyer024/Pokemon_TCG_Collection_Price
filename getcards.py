@@ -45,14 +45,16 @@ dfs = pd.read_html(url)
 df = dfs[1]['Item']
 
 # Define the final DataFrame
-card_list = pd.DataFrame(columns=['Name', 'Type', 'Number', 'Series'])
+card_list = pd.DataFrame(columns=['Name', 'Type', 'Number', 'Series', 'Grade'])
 
 # Iterate through the items that contain the card data
-for i in df:
+for i in range(1,len(df),2):
     # Filters the items that are not a float item, this is because the 'float' items are 'nan' 
-    if type(i) != float:
-        row = pd.Series(get_cards(i))
+    if type(df[i]) != float:
+        row = pd.Series(get_cards(df[i]))
         # Adds the series item as a new row to the final DataFrame
+        row['Value'] = float(dfs[1]['Value'][i][1:5])
+        row['Grade'] = (dfs[1]['Includes / Qty'][i])
         card_list = pd.concat([card_list, row.to_frame().T], ignore_index=True)
 
 # Save the table to a file        
