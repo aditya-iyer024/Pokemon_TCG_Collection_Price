@@ -31,7 +31,7 @@ def get_cards(card_string):
         'Name': name,
         'Type': card_type,
         'Number': number,
-        'Series': series
+        'Series': 'Pokemon '+ series
     }
 
     return(card_data)
