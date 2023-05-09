@@ -36,7 +36,7 @@ def get_cards(card_string):
 
     return(card_data)
 
-url = 'https://www.pricecharting.com/offers?seller=7ugl5zx7u5td7l447wcxgbn6vy&status=collection'
+url = 'https://www.pricecharting.com/offers?seller=7ugl5zx7u5td7l447wcxgbn6vy&status=collection' #Update the URL
 
 # Read HTML table into a list of DataFrames
 dfs = pd.read_html(url)
